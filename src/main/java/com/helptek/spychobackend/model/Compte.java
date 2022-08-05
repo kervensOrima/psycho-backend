@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @Entity
@@ -22,6 +23,9 @@ public class Compte implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCompte;
 
+
+    @Email(message = "L'adresse email est invalide!")
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     String email ;
 
     String password ;

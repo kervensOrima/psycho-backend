@@ -38,9 +38,6 @@ public abstract class Personne implements Serializable {
     @Enumerated(EnumType.STRING)
     Sexe sexe ;
 
-    @Column(name = "email" , length = 100, unique = true)
-    String email ;
-
     @Column(nullable = false,  updatable = true )
     Date date_naissance ;
 

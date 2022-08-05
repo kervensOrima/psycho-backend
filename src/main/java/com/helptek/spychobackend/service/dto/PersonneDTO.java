@@ -34,8 +34,6 @@ public abstract class PersonneDTO  implements Serializable {
 
     String telephone ;
 
-    @Email(message = "L'adresse email est invalide!")
-    String email ;
 
     String image ;
 
