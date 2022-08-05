@@ -22,7 +22,6 @@ public abstract class PersonneDTO  implements Serializable {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     Long id ;
 
-
     String nom ;
 
     String prenom ;
@@ -35,11 +34,11 @@ public abstract class PersonneDTO  implements Serializable {
 
     String telephone ;
 
-    @Email(message = "L'adresse email est invalide!", regexp = "^(.+)@(\\\\S+)$")
+    @Email(message = "L'adresse email est invalide!")
     String email ;
 
-    String password;
-
     String image ;
+
+    AccountDTO account;
 
 }

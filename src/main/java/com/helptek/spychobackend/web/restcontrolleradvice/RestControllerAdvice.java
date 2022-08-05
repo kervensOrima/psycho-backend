@@ -1,5 +1,6 @@
 package com.helptek.spychobackend.web.restcontrolleradvice;
 
+import com.helptek.spychobackend.service.exceptions.AgeInvalideException;
 import com.helptek.spychobackend.service.exceptions.ObjectNotFoundException;
 import com.helptek.spychobackend.utilities.ErrorMessage;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,19 @@ public class RestControllerAdvice {
         ErrorMessage errorMessage = ErrorMessage
                 .builder()
                 .errorMessage(exp.getMessage())
-                .code(404L)
+                .code(500L)
+                .timestamp(new Date())
+                .module(exp.getLocalizedMessage())
+                .build();
+        return new ResponseEntity<Object>( errorMessage , HttpStatus.NOT_FOUND );
+    }
+
+    @ExceptionHandler(value = {AgeInvalideException.class})
+    public ResponseEntity<Object> ageInvalideException(AgeInvalideException exp)  {
+        ErrorMessage errorMessage = ErrorMessage
+                .builder()
+                .errorMessage(exp.getMessage())
+                .code(500L)
                 .timestamp(new Date())
                 .module(exp.getLocalizedMessage())
                 .build();

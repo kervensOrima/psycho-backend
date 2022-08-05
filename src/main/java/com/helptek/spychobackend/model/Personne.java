@@ -38,9 +38,10 @@ public abstract class Personne implements Serializable {
     @Enumerated(EnumType.STRING)
     Sexe sexe ;
 
+    @Column(name = "email" , length = 100, unique = true)
     String email ;
 
-    @Column(nullable = false,  updatable = true)
+    @Column(nullable = false,  updatable = true )
     Date date_naissance ;
 
     @Column(nullable = false, length = 20, updatable = true)
@@ -49,7 +50,7 @@ public abstract class Personne implements Serializable {
     String image ;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id_compte" , insertable = true, unique = true, nullable = false)
+    @JoinColumn(name = "id_compte" , insertable = true, unique = true)
     Compte compte ;
 
 }
